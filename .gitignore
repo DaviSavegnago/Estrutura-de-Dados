@@ -1,0 +1,6 @@
+*.exe
+*.class
+__pycache__/
+*.iml
+.ideia/
+out/
