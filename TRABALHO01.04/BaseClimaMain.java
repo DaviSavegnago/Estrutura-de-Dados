@@ -80,7 +80,7 @@ public class BaseClimaMain {
 
             if (chuva.equals("muita")) {
                 chuvaPorAno.put(c.ano, chuvaPorAno.getOrDefault(c.ano, 0) + 1);
-            } else if (chuva.equals("media")) {
+            } else if (chuva.equals("média")) {
                 mediaPorAno.put(c.ano, mediaPorAno.getOrDefault(c.ano, 0) + 1);
             } else if (chuva.equals("pouca")) {
                 poucaPorAno.put(c.ano, poucaPorAno.getOrDefault(c.ano, 0) + 1);
@@ -121,36 +121,52 @@ public class BaseClimaMain {
             }
         }
 
-         int melhorAnoChuva = -1;
+
+        //desempate por média
+        ArrayList<Integer> melhoresMedia = new ArrayList<>();
+        int maxMedia = -1;
 
         for (int ano : anosMaisChuvosos) {
+            int valor = mediaPorAno.getOrDefault(ano, 0);
 
-            if (melhorAnoChuva == -1) {
-                melhorAnoChuva = ano;
-                continue;
+            if (valor > maxMedia) {
+                maxMedia = valor;
+                melhoresMedia.clear();
+                melhoresMedia.add(ano);
+            } else if (valor == maxMedia) {
+                melhoresMedia.add(ano);
             }
+        }
 
-            int mediaAtual = mediaPorAno.getOrDefault(ano, 0);
-            int mediaMelhor = mediaPorAno.getOrDefault(melhorAnoChuva, 0);
+        //desempate por pouca
+        ArrayList<Integer> melhoresPouca = new ArrayList<>();
+        int maxPouca = -1;
 
-            if (mediaAtual > mediaMelhor) {
-                melhorAnoChuva = ano;
-            } else if (mediaAtual == mediaMelhor) {
+        for (int ano : melhoresMedia) {
+            int valor = poucaPorAno.getOrDefault(ano, 0);
 
-                int poucaAtual = poucaPorAno.getOrDefault(ano, 0);
-                int poucaMelhor = poucaPorAno.getOrDefault(melhorAnoChuva, 0);
+            if (valor > maxPouca) {
+                maxPouca = valor;
+                melhoresPouca.clear();
+                melhoresPouca.add(ano);
+            } else if (valor == maxPouca) {
+                melhoresPouca.add(ano);
+            }
+        }
 
-                if (poucaAtual > poucaMelhor) {
-                    melhorAnoChuva = ano;
-                } else if (poucaAtual == poucaMelhor) {
+        //desempate por nada
+        ArrayList<Integer> melhoresNada = new ArrayList<>();
+        int maxNada = -1;
 
-                    int nadaAtual = nadaPorAno.getOrDefault(ano, 0);
-                    int nadaMelhor = nadaPorAno.getOrDefault(melhorAnoChuva, 0);
+        for (int ano : melhoresPouca) {
+            int valor = nadaPorAno.getOrDefault(ano, 0);
 
-                    if (nadaAtual > nadaMelhor) {
-                        melhorAnoChuva = ano;
-                    }
-                }
+            if (valor > maxNada) {
+                maxNada = valor;
+                melhoresNada.clear();
+                melhoresNada.add(ano);
+            } else if (valor == maxNada) {
+                melhoresNada.add(ano);
             }
         }
 
@@ -168,9 +184,8 @@ public class BaseClimaMain {
         if (anosMaisChuvosos.size() > 1) {
             System.out.println("Empate na chuva (muita): " +
                     anosMaisChuvosos.toString().replace("[", "").replace("]", ""));
-            System.out.println("Desempate -> Ano mais chuvoso (mais médias): " + melhorAnoChuva);
-        } else {
-            System.out.println("Ano mais chuvoso: " + melhorAnoChuva);
+            System.out.println("Desempate final: " +melhoresNada.toString().replace("[", "").replace("]", ""));
+        
         }
     }
 
