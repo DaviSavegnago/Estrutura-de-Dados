@@ -78,28 +78,42 @@ public class BaseClimaMain {
             }
         }
 
-        //ano mais quente
-        int anoMaisQuente = 0, maxCalor = 0;
+        //ano mais quente, ajeitei caso de empate
+        ArrayList<Integer> anosMaisQuentes = new ArrayList<>();
+        int maxCalor = 0;
+    
         for (int ano : calorPorAno.keySet()) {
-            if (calorPorAno.get(ano) > maxCalor) {
-                maxCalor = calorPorAno.get(ano);
-                anoMaisQuente = ano;
-            }
+            int valor = calorPorAno.get(ano);
+    
+            if (valor > maxCalor) {
+                maxCalor = valor;
+                anosMaisQuentes.clear(); // limpa anteriores
+                anosMaisQuentes.add(ano);
+            } else if (valor == maxCalor) {
+                anosMaisQuentes.add(ano); // empate
+              }
         }
 
-        //ano mais chuvoso
-        int anoMaisChuvoso = 0, maxChuva = 0;
+        //ano mais chuvoso, ajeitei caso de empate
+        ArrayList<Integer> anosMaisChuvosos = new ArrayList<>();
+        int maxChuva = 0;
+
         for (int ano : chuvaPorAno.keySet()) {
-            if (chuvaPorAno.get(ano) > maxChuva) {
-                maxChuva = chuvaPorAno.get(ano);
-                anoMaisChuvoso = ano;
+        int valor = chuvaPorAno.get(ano);
+    
+            if (valor > maxChuva) {
+                maxChuva = valor;
+                anosMaisChuvosos.clear();
+                anosMaisChuvosos.add(ano);
+            } else if (valor == maxChuva) {
+                anosMaisChuvosos.add(ano);
             }
         }
 
         //resultado final
         System.out.println("\nRESULTADO:");
-        System.out.println("Ano mais quente: " + anoMaisQuente);
-        System.out.println("Ano mais chuvoso: " + anoMaisChuvoso);
+        System.out.println("Ano(s) mais quente(s): " + anosMaisQuentes);
+        System.out.println("Ano(s) mais chuvoso(s): " + anosMaisChuvosos);
     }
 
     public static void main(String[] args) {
