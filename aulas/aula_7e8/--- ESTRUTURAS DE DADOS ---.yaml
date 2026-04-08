@@ -1,0 +1,18 @@
+                                            --- ESTRUTURAS DE DADOS ---
+
+- Físicas: as próprias variáveis - fortemente dependente da linguagem e programação
+- Abstratas: Os algoritmos de gestão de memória
+
+
+    - LISTA: conjunto de dados ordenados(não obrigatoriamente)
+        -todas as operações, inserir, remover, buscar, atualizar (Create, Retrieve, Delete - CRUD, Update)
+        - armazenamento, busca e relatorio
+
+    - PILHA: dados organizados pelo topo - LIFO: last in. first out
+        - foca em duas operações: inserir no topo e remover do topo
+        - foco no que está no topo
+
+    - FILA: dados organizados pela chegada, 
+
+    No processo de herança:
+    LISTA -> PILHA -> FILA
