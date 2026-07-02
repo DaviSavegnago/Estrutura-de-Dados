@@ -1,0 +1,23 @@
+- TRABALHO
+
+    FAZER UMA CLASSE
+        -> Ler csv = mapa.csv
+        -> adicionar os vértices localizados na lista de vértices (sem duplicar)
+        
+
+vertices[a,b,c,d,e]
+vertices.sort()
+
+
+mapa.csv
+a,b
+b,c 
+b,d 
+d,a 
+d,b
+d,c 
+e,d 
+
+extrair vertices do csv e add na lista de vertices que já temos (ordená-los)
+
+

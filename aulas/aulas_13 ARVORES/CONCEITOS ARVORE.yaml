@@ -1,0 +1,8 @@
+CONCEITOS 
+    - RAIZ = nó ou nodo de uma sub-árvore
+    - FOLHA = nó ou nodo sem filhos
+
+    PERCURSO
+        RED = pré-fixado -> Pesquisa                            if (arvore.contains(60)){
+        ERD = in-fixado -> Exibição (árvore já ordenada)        for (Integer i : arvore){
+        EDR = pós-fixado -> Apagar (destruição da árvore)       arvore.clear()

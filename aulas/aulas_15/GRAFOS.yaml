@@ -1,0 +1,33 @@
+lista -> pilha -> fila -> árvore -> *GRAFOS*
+
+Roteamento - Percurso - Caminhamento
+
+Track ou Route
+
+    Representar Mapas
+        - Rodoviário        
+        - Equipamento       -> Circuitos elétricos - Circuitos de placas mãe - Informática
+        - Aeroviário
+        - Ferroviário
+
+
+CONCEITOS:
+    - Nó, nodo ou vértice       {a; b; c; d}
+    - Aresta ou Arco            {a,b ; b,c ; b,d ; d,a ; d,b ; d,c}
+    - Grau                      arestas que chegam e partem (imaginar plataformas de metrô que mais tem ramificações = maior grau)
+        -> Total
+        -> Incidência = chegada
+        -> Partida
+
+    - Simetria
+        -> Simétrico                O - O
+        -> Assimétrico = Digrafo    O -> O    O <- O
+    - Representação 
+        -> Disco
+        -> RAM 
+
+    - Matriz de Adjacência
+        -> Qtd de LINHAS = Qtd de VÉRTICES
+        -> Qtd de COLUNAS = Qtd de VÉRTICES
+
+    
